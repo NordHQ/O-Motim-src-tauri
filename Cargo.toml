@@ -1,0 +1,55 @@
+[package]
+name = "omotim"
+version = "0.1.0"
+description = "O'MOTIM — modular reconnaissance pipeline"
+authors = ["you"]
+edition = "2021"
+
+[lib]
+name = "omotim_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = [] }
+tauri-plugin-shell = "2"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+
+# Async runtime & HTTP (kuchli, tez, kam resurs)
+tokio = { version = "1", features = ["full"] }
+tokio-util = { version = "0.7", features = ["rt"] }
+reqwest = { version = "0.12", default-features = false, features = ["rustls-tls", "gzip", "json", "stream"] }
+futures = "0.3"
+
+# Parsing & regex (Lethal'dan olingan yondashuv)
+scraper = "0.20"
+regex = "1"
+url = "2"
+
+# DNS resolution (subdomain resolver uchun)
+hickory-resolver = "0.24"
+
+# Sysinfo (CPU/RAM statistikasi — juda yengil)
+sysinfo = "0.32"
+
+# Hash & fingerprint yordamchilari
+sha2 = "0.10"
+md-5 = "0.10"
+
+# Xatoliklarni soddalashtirish
+anyhow = "1"
+thiserror = "1"
+tracing = "0.1"
+
+# URL encoding (rescan_item uchun)
+urlencoding = "2"
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+strip = true
+panic = "abort"
