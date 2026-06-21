@@ -8,6 +8,8 @@
 [![Tauri](https://img.shields.io/badge/Tauri-v2-blue?logo=tauri)](https://tauri.app)
 [![License: MIT](https://img.shields.io/badge/License-MIT-orange.svg)](LICENSE)
 
+**Tags:** `osint` `pentest` `reconnaissance` `rust` `tauri` `cybersecurity` `security-tools` `hacking`
+
 *This repo is the `src-tauri/` directory for [NordHQ/O-Motim](https://github.com/NordHQ/O-Motim)*
 
 </div>
@@ -75,7 +77,7 @@ src/
 ## Key Design Decisions
 
 ### Shared ScanContext
-Every module receives `&mut ScanContext` — a single struct holding all findings. This means fingerprinting can immediately inform CVE matching, HTTP probe results feed into secrets scanning, and so on — no duplicated work.
+Every module receives `&mut ScanContext` — a single struct holding all findings. This means fingerprinting can immediately inform CVE matching, HTTP probe results feed into secrets scanning, and so on.
 
 ```rust
 pub struct ScanContext {
